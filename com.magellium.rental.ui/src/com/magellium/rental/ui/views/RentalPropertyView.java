@@ -14,6 +14,7 @@ import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.widgets.TabFolder;
@@ -102,9 +103,9 @@ public class RentalPropertyView extends ViewPart {
 		endDateLabel = new Label(dateGroup, SWT.NONE);
 		
 		table = new Table(parent, SWT.BORDER | SWT.FULL_SELECTION);
-		GridData gd_table = new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1);
+		GridData gd_table = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
 		gd_table.heightHint = 72;
-		gd_table.widthHint = 363;
+		gd_table.widthHint = 279;
 		table.setLayoutData(gd_table);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
@@ -128,8 +129,36 @@ public class RentalPropertyView extends ViewPart {
 		tableItem_2 = new TableItem(table_1, SWT.NONE);
 		tableItem_2.setText("New TableItem");
 		
-		setRental(RentalCoreActivator.getAgency().getRentals().get(1));
+		 Table table2 = new Table(parent, SWT.MULTI | SWT.BORDER
+			        | SWT.FULL_SELECTION);
+		 table2.setLinesVisible(true);
+		 table2.setHeaderVisible(true);
+			    String[] titles = { " ", "C", "!", "Description", "Resource",
+			        "In Folder", "Location" };
+			    for (int i = 0; i < titles.length; i++) {
+			      TableColumn column = new TableColumn(table2, SWT.NONE);
+			      column.setText(titles[i]);
+			    }
+			    int count = 128;
+			    for (int i = 0; i < count; i++) {
+			      TableItem item = new TableItem(table2, SWT.NONE);
+			      item.setText(0, "x");
+			      item.setText(1, "y");
+			      item.setText(2, "!");
+			      item.setText(3, "this stuff behaves the way I expect");
+			      item.setText(4, "almost everywhere");
+			      item.setText(5, "some.folder");
+			      item.setText(6, "line " + i + " in nowhere");
+			    }
+			    for (int i = 0; i < titles.length; i++) {
+			    	table2.getColumn(i).pack();
+			    }
+			    table2.setSize(table2.computeSize(SWT.DEFAULT, 200));		
 		
+		
+		
+		
+		setRental(RentalCoreActivator.getAgency().getRentals().get(1));
 	}
 
 	@Override
