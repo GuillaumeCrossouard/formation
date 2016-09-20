@@ -31,6 +31,10 @@ public class RentalAgencyPropertyView extends ViewPart {
 		
 		treeViewer.setInput(agencies);
 		treeViewer.expandAll();
+		
+		// cette vue fournit la selection
+		// le treeViewer implemente ISelectionProvider
+		getSite().setSelectionProvider(treeViewer);
 	}
 
 	@Override

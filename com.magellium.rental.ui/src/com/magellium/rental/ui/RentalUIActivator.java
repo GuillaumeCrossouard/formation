@@ -1,13 +1,11 @@
 package com.magellium.rental.ui;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.launch.Framework;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -21,6 +19,7 @@ public class RentalUIActivator extends AbstractUIPlugin {
 	public static final String IMG_RENTAL = "icons/Rentals.png";
 	public static final String IMG_OBJECT = "icons/RentalObjects.png";
 	public static final String IMG_AGENCY = "icons/Agency.png";
+	public static final String IMG_SEARCH_AGAIN = "icons/search_again.gif"; // issu du projet org.eclipse.search
 
 	// The shared instance
 	private static RentalUIActivator plugin;
@@ -65,7 +64,8 @@ public class RentalUIActivator extends AbstractUIPlugin {
 		reg.put(IMG_CUSTOMER,  ImageDescriptor.createFromURL(b.getEntry(IMG_CUSTOMER)));
 		reg.put(IMG_RENTAL,  ImageDescriptor.createFromURL(b.getEntry(IMG_RENTAL)));
 		reg.put(IMG_OBJECT,  ImageDescriptor.createFromURL(b.getEntry(IMG_OBJECT)));
-		reg.put(IMG_AGENCY,  ImageDescriptor.createFromURL(b.getEntry(IMG_AGENCY)));
+//		reg.put(IMG_AGENCY,  ImageDescriptor.createFromURL(b.getEntry(IMG_AGENCY)));
+		reg.put(IMG_AGENCY,  ImageDescriptor.createFromURL(b.getEntry(IMG_SEARCH_AGAIN)));
 	}
 
 }

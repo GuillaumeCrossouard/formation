@@ -1,28 +1,30 @@
 package com.magellium.rental.ui.views;
 
 
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.part.ViewPart;
-
-import com.magellium.rental.core.RentalCoreActivator;
-import com.opcoach.training.rental.Customer;
-import com.opcoach.training.rental.Rental;
-import com.opcoach.training.rental.RentalAgency;
+import org.eclipse.swt.widgets.TabFolder;
+import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.swt.widgets.Slider;
-import org.eclipse.swt.browser.Browser;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.part.ViewPart;
 
-public class RentalPropertyView extends ViewPart {
+import com.magellium.rental.core.RentalCoreActivator;
+import com.opcoach.training.rental.Rental;
+
+public class RentalPropertyView extends ViewPart implements ISelectionListener{
 
 	private Label rentedObjectLabel;
 	private Label customerLabel;
@@ -47,7 +49,19 @@ public class RentalPropertyView extends ViewPart {
 	public RentalPropertyView() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void init(IViewSite site) throws PartInitException {
+		super.init(site);
+		site.getPage().addSelectionListener(this);
+	}
 
+	@Override
+	public void dispose() {
+		getSite().getPage().removeSelectionListener(this);
+		super.dispose();
+	}
+	
 	@Override
 	public void createPartControl(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
@@ -174,5 +188,18 @@ public class RentalPropertyView extends ViewPart {
 		startDateLabel.setText(r.getStartDate().toString());
 		endDateLabel.setText(r.getEndDate().toString());
 	}
+
+	@Override
+	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+		if (selection instanceof IStructuredSelection){
+			Object select = ((IStructuredSelection)selection).getFirstElement();
+			if (select instanceof Rental){
+				setRental((Rental)select);
+			} else {
+				System.out.println("selection non prise en compte");
+			}
+		}
+	}
+
 	
 }
