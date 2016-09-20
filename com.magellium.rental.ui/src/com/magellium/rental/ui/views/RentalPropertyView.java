@@ -45,12 +45,13 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 	private TableItem tableItem_1;
 	private Table table_1;
 	private TableViewer tableViewer;
-	private TableItem tableItem_2;
 	private TabFolder tabFolder;
 	private TabItem tbtmNewItem;
 	private TabItem tbtmNewItem_2;
 	private TableItem tableItem_3;
 	private TableItem tableItem_4;
+	private TableColumn tblclmnNewColumn;
+	private TableColumn tblclmnNewColumn_1;
 
 
 	public RentalPropertyView() {
@@ -127,7 +128,7 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 		
 		table = new Table(parent, SWT.BORDER | SWT.FULL_SELECTION);
 		GridData gd_table = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
-		gd_table.heightHint = 72;
+		gd_table.heightHint = 76;
 		gd_table.widthHint = 279;
 		table.setLayoutData(gd_table);
 		table.setHeaderVisible(true);
@@ -147,24 +148,26 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 		
 		tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION);
 		table_1 = tableViewer.getTable();
-		table_1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+		GridData gd_table_1 = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
+		gd_table_1.heightHint = 92;
+		table_1.setLayoutData(gd_table_1);
 		
-		tableItem_2 = new TableItem(table_1, SWT.NONE);
-		tableItem_2.setText("New TableItem");
+		tblclmnNewColumn = new TableColumn(table_1, SWT.NONE);
+		tblclmnNewColumn.setWidth(100);
+		tblclmnNewColumn.setText("New Column");
 		
-		 Table table2 = new Table(parent, SWT.MULTI | SWT.BORDER
-			        | SWT.FULL_SELECTION);
-		 table2.setLinesVisible(true);
-		 table2.setHeaderVisible(true);
+		tblclmnNewColumn_1 = new TableColumn(table_1, SWT.NONE);
+		tblclmnNewColumn_1.setWidth(100);
+		tblclmnNewColumn_1.setText("New Column");
 			    String[] titles = { " ", "C", "!", "Description", "Resource",
 			        "In Folder", "Location" };
 			    for (int i = 0; i < titles.length; i++) {
-			      TableColumn column = new TableColumn(table2, SWT.NONE);
+			      TableColumn column = new TableColumn(table_1, SWT.NONE);
 			      column.setText(titles[i]);
 			    }
 			    int count = 128;
 			    for (int i = 0; i < count; i++) {
-			      TableItem item = new TableItem(table2, SWT.NONE);
+			      TableItem item = new TableItem(table_1, SWT.NONE);
 			      item.setText(0, "x");
 			      item.setText(1, "y");
 			      item.setText(2, "!");
@@ -174,9 +177,8 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 			      item.setText(6, "line " + i + " in nowhere");
 			    }
 			    for (int i = 0; i < titles.length; i++) {
-			    	table2.getColumn(i).pack();
+			    	table_1.getColumn(i).pack();
 			    }
-			    table2.setSize(table2.computeSize(SWT.DEFAULT, 200));		
 		
 		
 		
@@ -212,18 +214,6 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 	
 	//drag & drop
 	public void setLabelAsDragSource(final Label label){
-		DragSource source = new DragSource(label, DND.DROP_MOVE | DND.DROP_COPY);
-		
-		source.setTransfer(new Transfer[]{TextTransfer.getInstance()});
-		
-		source.addDragListener(new DragSourceAdapter(){
-			@Override
-			public void dragSetData(DragSourceEvent event) {
-				if (TextTransfer.getInstance().isSupportedType(event.dataType)){
-					event.data = label.getText();
-				}
-			}
-		});
 	}
 	
 
