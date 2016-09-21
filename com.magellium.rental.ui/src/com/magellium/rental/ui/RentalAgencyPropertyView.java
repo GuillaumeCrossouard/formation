@@ -3,14 +3,20 @@ package com.magellium.rental.ui;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.magellium.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.RentalAgency;
 
-public class RentalAgencyPropertyView extends ViewPart {
+public class RentalAgencyPropertyView extends ViewPart implements IPropertyChangeListener {
+
+	private TreeViewer treeViewer;
 
 	public RentalAgencyPropertyView() {
 		// TODO Auto-generated constructor stub
@@ -18,20 +24,20 @@ public class RentalAgencyPropertyView extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		TreeViewer treeViewer = new TreeViewer(parent);
-		
+		treeViewer = new TreeViewer(parent);
+
 		RentalProvider rentalProvider = new RentalProvider();
-		
+
 		treeViewer.setContentProvider(rentalProvider);
 		treeViewer.setLabelProvider(rentalProvider);
-		
+
 		RentalAgency agency = RentalCoreActivator.getAgency();
 		Collection<RentalAgency> agencies = new ArrayList<RentalAgency>();
 		agencies.add(agency);
-		
+
 		treeViewer.setInput(agencies);
 		treeViewer.expandAll();
-		
+
 		// cette vue fournit la selection
 		// le treeViewer implemente ISelectionProvider
 		getSite().setSelectionProvider(treeViewer);
@@ -41,6 +47,23 @@ public class RentalAgencyPropertyView extends ViewPart {
 	public void setFocus() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void init(IViewSite site) throws PartInitException {
+		super.init(site);
+		RentalUIActivator.getDefault().getPreferenceStore().addPropertyChangeListener(this);
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		RentalUIActivator.getDefault().getPreferenceStore().removePropertyChangeListener(this);
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		treeViewer.refresh();
 	}
 
 }

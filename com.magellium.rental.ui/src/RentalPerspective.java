@@ -12,10 +12,9 @@ public class RentalPerspective implements IPerspectiveFactory {
 		addFastViews(layout);
 		addViewShortcuts(layout);
 		addPerspectiveShortcuts(layout);
-		layout.addView("com.magellium.rental.ui.viewrental", IPageLayout.BOTTOM, 0.5f, IPageLayout.ID_EDITOR_AREA);
-		layout.addView("org.eclipse.ui.views.ContentOutline", IPageLayout.RIGHT, 0.67f, "com.magellium.rental.ui.viewrental");
 		layout.addView("com.magellium.rental.ui.view1", IPageLayout.LEFT, 0.5f, IPageLayout.ID_EDITOR_AREA);
-		layout.addView("org.eclipse.help.ui.HelpView", IPageLayout.RIGHT, 0.5f, "com.magellium.rental.ui.view1");
+		layout.addView("org.eclipse.ui.views.ContentOutline", IPageLayout.RIGHT, 0.72f, "com.magellium.rental.ui.view1");
+		layout.addView("com.magellium.rental.ui.viewrental", IPageLayout.BOTTOM, 0.5f, "com.magellium.rental.ui.view1");
 	}
 
 	/**

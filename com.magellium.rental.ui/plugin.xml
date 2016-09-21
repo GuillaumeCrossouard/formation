@@ -10,6 +10,7 @@
       <view
             category="com.magellium.rental.ui.category1"
             class="com.magellium.rental.ui.views.RentalPropertyView"
+            icon="icons/Rentals.png"
             id="com.magellium.rental.ui.viewrental"
             name="Rental"
             restorable="true">
@@ -17,6 +18,7 @@
       <view
             category="com.magellium.rental.ui.category1"
             class="com.magellium.rental.ui.RentalAgencyPropertyView"
+            icon="icons/Agency.png"
             id="com.magellium.rental.ui.view1"
             name="RentalAgencyView"
             restorable="true">
@@ -29,6 +31,20 @@
             id="RentalPerspective"
             name="Rental">
       </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.magellium.rental.ui.RentalPreferencePage"
+            id="com.magellium.rental.ui.RentalPreferencePage"
+            name="Rental">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.magellium.rental.ui.RentalPreferenceInitializer">
+      </initializer>
    </extension>
 
 </plugin>

@@ -2,7 +2,10 @@ package com.magellium.rental.ui;
 
 import java.util.Collection;
 
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -78,19 +81,38 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Color getForeground(Object element) {
+		
+		
 		if (element instanceof RentalAgency) {
 			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
 		}
 		if (element instanceof Rental) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
+//			return Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
+			String objectColorString = RentalUIActivator.getDefault().getPreferenceStore().getString(RentalPreferencePage.RENTAL_COLOR);
+			return getAColor(objectColorString);
 		}
 		if (element instanceof RentalObject) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+//			return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+			String objectColorString = RentalUIActivator.getDefault().getPreferenceStore().getString(RentalPreferencePage.OBJECTS_COLOR);
+			return getAColor(objectColorString);
 		}
 		if (element instanceof Customer) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_MAGENTA);
+			// recup de la pref
+			String customerColorString = RentalUIActivator.getDefault().getPreferenceStore().getString(RentalPreferencePage.CUSTOMER_COLOR);
+			return getAColor(customerColorString);
 		}
 		return null;
+	}
+	
+	// cf page 84
+	private Color getAColor(String rgbKey){
+		ColorRegistry cr = JFaceResources.getColorRegistry();
+		Color col = cr.get(rgbKey);
+		if (col == null){
+			cr.put(rgbKey, StringConverter.asRGB(rgbKey));
+			col = cr.get(rgbKey);
+		}
+		return col;
 	}
 
 	@Override

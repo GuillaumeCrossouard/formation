@@ -40,18 +40,6 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 	private Label lblLou;
 	private Label lblDu;
 	private Label lblAu;
-	private Table table;
-	private TableItem tableItem;
-	private TableItem tableItem_1;
-	private Table table_1;
-	private TableViewer tableViewer;
-	private TabFolder tabFolder;
-	private TabItem tbtmNewItem;
-	private TabItem tbtmNewItem_2;
-	private TableItem tableItem_3;
-	private TableItem tableItem_4;
-	private TableColumn tblclmnNewColumn;
-	private TableColumn tblclmnNewColumn_1;
 
 
 	public RentalPropertyView() {
@@ -74,17 +62,9 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 	public void createPartControl(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
 		
-		tabFolder = new TabFolder(parent, SWT.NONE);
-		
-		tbtmNewItem = new TabItem(tabFolder, SWT.NONE);
-		tbtmNewItem.setText("New Item");
-		
-		tbtmNewItem_2 = new TabItem(tabFolder, SWT.NONE);
-		tbtmNewItem_2.setText("New Item");
-		
 		Group infoGroup = new Group(parent, SWT.NONE);
 		GridData gd_infoGroup = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_infoGroup.widthHint = 232;
+		gd_infoGroup.widthHint = 340;
 		infoGroup.setLayoutData(gd_infoGroup);
 		infoGroup.setText("Informations");
 		infoGroup.setLayout(new GridLayout(3, false));
@@ -108,7 +88,7 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 		
 		Group dateGroup = new Group(parent, SWT.NONE);
 		GridData gd_dateGroup = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_dateGroup.widthHint = 232;
+		gd_dateGroup.widthHint = 340;
 		dateGroup.setLayoutData(gd_dateGroup);
 		dateGroup.setText("Dates");
 		dateGroup.setLayout(new GridLayout(2, false));
@@ -125,63 +105,6 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener{
 		lblAu.setText("au :");
 		
 		endDateLabel = new Label(dateGroup, SWT.NONE);
-		
-		table = new Table(parent, SWT.BORDER | SWT.FULL_SELECTION);
-		GridData gd_table = new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1);
-		gd_table.heightHint = 76;
-		gd_table.widthHint = 279;
-		table.setLayoutData(gd_table);
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-		
-		tableItem = new TableItem(table, SWT.NONE);
-		tableItem.setText("New TableItem");
-		
-		tableItem_1 = new TableItem(table, SWT.NONE);
-		tableItem_1.setText("New TableItem");
-		
-		tableItem_3 = new TableItem(table, SWT.NONE);
-		tableItem_3.setText("New TableItem");
-		
-		tableItem_4 = new TableItem(table, SWT.NONE);
-		tableItem_4.setText("New TableItem");
-		
-		tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION);
-		table_1 = tableViewer.getTable();
-		GridData gd_table_1 = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
-		gd_table_1.heightHint = 92;
-		table_1.setLayoutData(gd_table_1);
-		
-		tblclmnNewColumn = new TableColumn(table_1, SWT.NONE);
-		tblclmnNewColumn.setWidth(100);
-		tblclmnNewColumn.setText("New Column");
-		
-		tblclmnNewColumn_1 = new TableColumn(table_1, SWT.NONE);
-		tblclmnNewColumn_1.setWidth(100);
-		tblclmnNewColumn_1.setText("New Column");
-			    String[] titles = { " ", "C", "!", "Description", "Resource",
-			        "In Folder", "Location" };
-			    for (int i = 0; i < titles.length; i++) {
-			      TableColumn column = new TableColumn(table_1, SWT.NONE);
-			      column.setText(titles[i]);
-			    }
-			    int count = 128;
-			    for (int i = 0; i < count; i++) {
-			      TableItem item = new TableItem(table_1, SWT.NONE);
-			      item.setText(0, "x");
-			      item.setText(1, "y");
-			      item.setText(2, "!");
-			      item.setText(3, "this stuff behaves the way I expect");
-			      item.setText(4, "almost everywhere");
-			      item.setText(5, "some.folder");
-			      item.setText(6, "line " + i + " in nowhere");
-			    }
-			    for (int i = 0; i < titles.length; i++) {
-			    	table_1.getColumn(i).pack();
-			    }
-		
-		
-		
 		
 		setRental(RentalCoreActivator.getAgency().getRentals().get(1));
 	}

@@ -56,4 +56,39 @@ public class Node {
 		this.agency = agency;
 	}
 
+	
+	
+	// hash code & equals pour reexpand
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((agency == null) ? 0 : agency.hashCode());
+		result = prime * result + ((nodeLabel == null) ? 0 : nodeLabel.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Node other = (Node) obj;
+		if (agency == null) {
+			if (other.agency != null)
+				return false;
+		} else if (!agency.equals(other.agency))
+			return false;
+		if (nodeLabel == null) {
+			if (other.nodeLabel != null)
+				return false;
+		} else if (!nodeLabel.equals(other.nodeLabel))
+			return false;
+		return true;
+	}
 }
