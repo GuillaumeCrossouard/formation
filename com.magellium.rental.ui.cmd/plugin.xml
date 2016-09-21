@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="rental.ui.cmd.oneCustomerSelected">
+         <and>
+            <count
+                  value="1">
+            </count>
+            <iterate>
+               <instanceof
+                     value="com.opcoach.training.rental.Customer">
+               </instanceof>
+            </iterate>
+         </and>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="rental.ui.cmd.CustomerCopyHandler"
+            commandId="org.eclipse.ui.edit.copy">
+         <activeWhen>
+            <reference
+                  definitionId="rental.ui.cmd.oneCustomerSelected">
+            </reference></activeWhen>
+         <enabledWhen>
+            <reference
+                  definitionId="rental.ui.cmd.oneCustomerSelected">
+            </reference>
+         </enabledWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.magellium.rental.ui.rentalAgencyView?after=additions">
+         <command
+               commandId="org.eclipse.ui.edit.copy"
+               label="Customer Copy"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="rental.ui.cmd.oneCustomerSelected">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
