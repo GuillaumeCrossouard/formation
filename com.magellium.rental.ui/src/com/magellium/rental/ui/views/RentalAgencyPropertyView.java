@@ -1,4 +1,4 @@
-package com.magellium.rental.ui;
+package com.magellium.rental.ui.views;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,6 +14,8 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.magellium.rental.core.RentalCoreActivator;
+import com.magellium.rental.ui.RentalProvider;
+import com.magellium.rental.ui.RentalUIActivator;
 import com.opcoach.training.rental.RentalAgency;
 
 public class RentalAgencyPropertyView extends ViewPart implements IPropertyChangeListener {

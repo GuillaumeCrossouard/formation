@@ -17,10 +17,18 @@
       </view>
       <view
             category="com.magellium.rental.ui.category1"
-            class="com.magellium.rental.ui.RentalAgencyPropertyView"
+            class="com.magellium.rental.ui.views.RentalAgencyPropertyView"
             icon="icons/Agency.png"
             id="com.magellium.rental.ui.rentalAgencyView"
             name="RentalAgencyView"
+            restorable="true">
+      </view>
+      <view
+            category="com.magellium.rental.ui.category1"
+            class="com.magellium.rental.ui.views.CustomerView"
+            icon="icons/Customers.png"
+            id="com.magellium.rental.ui.customerView"
+            name="Customer"
             restorable="true">
       </view>
    </extension>
