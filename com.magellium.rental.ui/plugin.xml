@@ -19,7 +19,7 @@
             category="com.magellium.rental.ui.category1"
             class="com.magellium.rental.ui.RentalAgencyPropertyView"
             icon="icons/Agency.png"
-            id="com.magellium.rental.ui.view1"
+            id="com.magellium.rental.ui.rentalAgencyView"
             name="RentalAgencyView"
             restorable="true">
       </view>
@@ -45,6 +45,59 @@
       <initializer
             class="com.magellium.rental.ui.RentalPreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="HW test">
+            <command
+                  commandId="com.magellium.rental.ui.HWCommand"
+                  label="Hello World"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.views.ResourceNavigator?after=additions">
+         <command
+               commandId="com.magellium.rental.ui.HWCommand"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.views.ResourceNavigator?after=additions">
+         <command
+               commandId="com.magellium.rental.ui.HWCommand"
+               style="push">
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:com.magellium.rental.ui.rentalAgencyView?after=additions">
+         <command
+               commandId="com.magellium.rental.ui.HWCommand"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.magellium.rental.ui.HelloWorldHandler"
+            commandId="com.magellium.rental.ui.HWCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="com.magellium.rental.ui.HWCommand"
+            name="Hello World">
+      </command>
    </extension>
 
 </plugin>
