@@ -1,0 +1,19 @@
+Exercice RCP 092
+
+<extension point = "com.magellium.rental.ui.palette">
+
+	<palette
+		id = "daltonien"
+		name = "daltonien"
+		paletteClass = "com.magellium.palette.PaletteDaltonien"
+
+	/>
+
+
+
+Interface à étendre : IColorProvider
+	- Color getForeground(Object o)
+	- Color getBackground(Object o)
+
+
+

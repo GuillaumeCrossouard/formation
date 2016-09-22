@@ -20,6 +20,7 @@ public class RentalPreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(RentalPreferencePage.OBJECTS_COLOR, StringConverter.asString(new RGB(0, 250, 0)));
 		store.setDefault(RentalPreferencePage.RENTAL_COLOR, StringConverter.asString(new RGB(60, 50, 75)));
 
+		store.setDefault(PalettePreferencePage.PALETTE, "com.magellium.rental.ui.RentalPreferencePage");
 	}
 
 }

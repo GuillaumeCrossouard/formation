@@ -1,6 +1,7 @@
 package com.magellium.rental.ui;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -14,6 +15,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+import com.magellium.rental.ui.paletteManagement.PaletteDescriptor;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
@@ -82,11 +84,13 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Override
 	public Color getForeground(Object element) {
 		
+		/*
 		
 		if (element instanceof RentalAgency) {
 			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
 		}
 		if (element instanceof Rental) {
+			
 //			return Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
 			String objectColorString = RentalUIActivator.getDefault().getPreferenceStore().getString(RentalPreferencePage.RENTAL_COLOR);
 			return getAColor(objectColorString);
@@ -102,6 +106,36 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return getAColor(customerColorString);
 		}
 		return null;
+		
+		*/
+		
+		return getPaletteForegroundColor(element);
+	}
+
+	/**
+	 * Recupere le foregroudColor d'un element (RentalAgency, Rental, Customer ou RentalObject) depuis la palette positionnée dans les prefs
+	 * @param element
+	 * @return
+	 */
+	private Color getPaletteForegroundColor(Object element) {
+		
+		Map<String, PaletteDescriptor> paletteManager = RentalUIActivator.getDefault().getPaletteManager();
+		String paletteId = RentalUIActivator.getDefault().getPreferenceStore().getString(PalettePreferencePage.PALETTE);
+		Color foregroundColor = paletteManager.get(paletteId).getColorProvider().getForeground(element);
+		return foregroundColor;
+	}
+	
+	/**
+	 * Recupere le backgroudColor d'un element (RentalAgency, Rental, Customer ou RentalObject) depuis la palette positionnée dans les prefs
+	 * @param element
+	 * @return
+	 */
+	private Color getPaletteBackgroundColor(Object element) {
+		
+		Map<String, PaletteDescriptor> paletteManager = RentalUIActivator.getDefault().getPaletteManager();
+		String paletteId = RentalUIActivator.getDefault().getPreferenceStore().getString(PalettePreferencePage.PALETTE);
+		Color foregroundColor = paletteManager.get(paletteId).getColorProvider().getBackground(element);
+		return foregroundColor;
 	}
 	
 	// cf page 84
@@ -117,10 +151,12 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Color getBackground(Object element) {
-		if (element instanceof Node) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_NORMAL_SHADOW);
-		}
-		return null;
+//		if (element instanceof Node) {
+//			return Display.getCurrent().getSystemColor(SWT.COLOR_WIDGET_NORMAL_SHADOW);
+//		}
+//		return null;
+		
+		return getPaletteBackgroundColor(element);
 	}
 	
 	@Override

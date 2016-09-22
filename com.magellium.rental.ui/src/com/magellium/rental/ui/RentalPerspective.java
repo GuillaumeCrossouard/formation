@@ -1,3 +1,4 @@
+package com.magellium.rental.ui;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
