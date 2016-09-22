@@ -18,6 +18,7 @@ import com.magellium.rental.ui.RentalProvider;
 import com.magellium.rental.ui.RentalUIActivator;
 import com.opcoach.training.rental.RentalAgency;
 
+@Deprecated
 public class RentalAgencyPropertyView extends ViewPart implements IPropertyChangeListener {
 
 	private TreeViewer treeViewer;
