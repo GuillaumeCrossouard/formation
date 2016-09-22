@@ -37,7 +37,7 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="com.magellium.rental.ui.RentalPerspective"
-            id="RentalPerspective"
+            id="com.magellium.rental.ui.RentalPerspective"
             name="Rental">
       </perspective>
    </extension>

@@ -119,6 +119,10 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	 */
 	private Color getPaletteForegroundColor(Object element) {
 		
+		if (element == null){
+			return null;
+		}
+		
 		Map<String, PaletteDescriptor> paletteManager = RentalUIActivator.getDefault().getPaletteManager();
 		String paletteId = RentalUIActivator.getDefault().getPreferenceStore().getString(PalettePreferencePage.PALETTE);
 		Color foregroundColor = paletteManager.get(paletteId).getColorProvider().getForeground(element);
@@ -131,6 +135,10 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	 * @return
 	 */
 	private Color getPaletteBackgroundColor(Object element) {
+		
+		if (element == null){
+			return null;
+		}
 		
 		Map<String, PaletteDescriptor> paletteManager = RentalUIActivator.getDefault().getPaletteManager();
 		String paletteId = RentalUIActivator.getDefault().getPreferenceStore().getString(PalettePreferencePage.PALETTE);
