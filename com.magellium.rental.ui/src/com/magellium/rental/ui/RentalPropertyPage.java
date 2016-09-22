@@ -15,14 +15,11 @@ public class RentalPropertyPage extends FieldEditorPreferencePage implements IWo
 
 	@Override
 	public IAdaptable getElement() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setElement(IAdaptable element) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

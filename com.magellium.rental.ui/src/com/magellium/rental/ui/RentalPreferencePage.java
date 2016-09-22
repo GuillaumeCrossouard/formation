@@ -26,8 +26,6 @@ public class RentalPreferencePage extends FieldEditorPreferencePage implements I
 
 	@Override
 	public void init(IWorkbench workbench) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

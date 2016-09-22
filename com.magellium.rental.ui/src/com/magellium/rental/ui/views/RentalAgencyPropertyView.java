@@ -23,7 +23,6 @@ public class RentalAgencyPropertyView extends ViewPart implements IPropertyChang
 	private TreeViewer treeViewer;
 
 	public RentalAgencyPropertyView() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -55,7 +54,6 @@ public class RentalAgencyPropertyView extends ViewPart implements IPropertyChang
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
 
 	}
 

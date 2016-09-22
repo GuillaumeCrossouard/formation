@@ -17,14 +17,12 @@ import org.eclipse.ui.part.ViewPart;
 
 import com.magellium.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Customer;
-import com.opcoach.training.rental.Rental;
 
 public class CustomerView extends ViewPart implements ISelectionListener {
 
 	private Label customerLabel;
 
 	public CustomerView() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -51,12 +49,11 @@ public class CustomerView extends ViewPart implements ISelectionListener {
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
 
 	}
 
 	public void setCustomerLabel(Customer c) {
-		if (c == null){
+		if (c == null) {
 			customerLabel.setText("Select a customer or rental");
 		} else {
 			customerLabel.setText(c.getFirstName() + " " + c.getLastName());

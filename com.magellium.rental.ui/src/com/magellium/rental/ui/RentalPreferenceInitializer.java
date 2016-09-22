@@ -8,7 +8,6 @@ import org.eclipse.swt.graphics.RGB;
 public class RentalPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public RentalPreferenceInitializer() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

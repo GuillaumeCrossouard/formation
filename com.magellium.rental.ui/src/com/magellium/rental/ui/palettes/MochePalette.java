@@ -8,7 +8,6 @@ import org.eclipse.swt.widgets.Display;
 public class MochePalette implements IColorProvider {
 
 	public MochePalette() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

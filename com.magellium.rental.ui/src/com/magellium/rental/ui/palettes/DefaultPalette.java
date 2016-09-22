@@ -19,7 +19,6 @@ import com.opcoach.training.rental.RentalObject;
 public class DefaultPalette implements IColorProvider {
 
 	public DefaultPalette() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

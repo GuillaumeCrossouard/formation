@@ -1,37 +1,19 @@
-package com.magellium.rental.ui.views;
+package com.magellium.rental.e4.views;
 
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.TableViewer;
+import javax.annotation.PostConstruct;
+
+import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.dnd.DND;
-import org.eclipse.swt.dnd.DragSource;
-import org.eclipse.swt.dnd.DragSourceAdapter;
-import org.eclipse.swt.dnd.DragSourceEvent;
-import org.eclipse.swt.dnd.DragSourceListener;
-import org.eclipse.swt.dnd.TextTransfer;
-import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IViewSite;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.part.ViewPart;
 
 import com.magellium.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
 
-@Deprecated
-public class RentalPropertyView extends ViewPart implements ISelectionListener {
+public class RentalPropertyView {
 
 	private Label rentedObjectLabel;
 	private Label customerLabel;
@@ -44,19 +26,22 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener {
 	public RentalPropertyView() {
 	}
 
-	@Override
-	public void init(IViewSite site) throws PartInitException {
-		super.init(site);
-		site.getPage().addSelectionListener(this);
-	}
+	// E34
+//	@Override
+//	public void init(IViewSite site) throws PartInitException {
+//		super.init(site);
+//		site.getPage().addSelectionListener(this);
+//	}
 
-	@Override
-	public void dispose() {
-		getSite().getPage().removeSelectionListener(this);
-		super.dispose();
-	}
+	// E34
+//	@Override
+//	public void dispose() {
+//		getSite().getPage().removeSelectionListener(this);
+//		super.dispose();
+//	}
 
-	@Override
+//	@Override
+	@PostConstruct
 	public void createPartControl(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
 
@@ -107,9 +92,10 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener {
 		setRental(RentalCoreActivator.getAgency().getRentals().get(1));
 	}
 
-	@Override
+//	@Override
+	@Focus
 	public void setFocus() {
-
+		
 	}
 
 	public void setRental(Rental r) {
@@ -119,17 +105,18 @@ public class RentalPropertyView extends ViewPart implements ISelectionListener {
 		endDateLabel.setText(r.getEndDate().toString());
 	}
 
-	@Override
-	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		if (selection instanceof IStructuredSelection) {
-			Object select = ((IStructuredSelection) selection).getFirstElement();
-			if (select instanceof Rental) {
-				setRental((Rental) select);
-			} else {
-				System.out.println("selection non prise en compte");
-			}
-		}
-	}
+	// E34
+//	@Override
+//	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+//		if (selection instanceof IStructuredSelection) {
+//			Object select = ((IStructuredSelection) selection).getFirstElement();
+//			if (select instanceof Rental) {
+//				setRental((Rental) select);
+//			} else {
+//				System.out.println("selection non prise en compte");
+//			}
+//		}
+//	}
 
 	// drag & drop
 	public void setLabelAsDragSource(final Label label) {
