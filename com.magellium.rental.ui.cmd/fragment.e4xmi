@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_eM3n4IGREeaN6egb8cebjQ">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_jZHqUIGREeaN6egb8cebjQ" featurename="commands" parentElementId="xpath:/">
+    <elements xsi:type="commands:Command" xmi:id="_sxGGUIGREeaN6egb8cebjQ" elementId="org.eclipse.ui.edit/copy" commandName="Copy"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_z_BsoIGREeaN6egb8cebjQ" featurename="handlers" parentElementId="xpath:/">
+    <elements xsi:type="commands:Handler" xmi:id="_BHQHIIGSEeaN6egb8cebjQ" elementId="com.magellium.rental.ui.cmd.handler.0" contributionURI="bundleclass://com.magellium.rental.ui/com.magellium.rental.e4.handlers.CustomerCopyHandler" command="_sxGGUIGREeaN6egb8cebjQ"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_6kjPIIGREeaN6egb8cebjQ" featurename="menuContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_AkgmcIGSEeaN6egb8cebjQ" elementId="com.magellium.rental.ui.cmd.menucontribution.0" positionInParent="after=additions" parentId="com.magellium.rental.eap.popupmenu.0">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_4UfbkIGSEeaN6egb8cebjQ" elementId="com.magellium.rental.ui.cmd.handledmenuitem.copy" label="Copy" command="_sxGGUIGREeaN6egb8cebjQ"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

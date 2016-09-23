@@ -12,6 +12,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
+@Deprecated
 public class SampleHandler extends AbstractHandler {
 
 	@Override

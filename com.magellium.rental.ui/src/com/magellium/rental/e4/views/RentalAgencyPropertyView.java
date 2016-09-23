@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -20,6 +21,8 @@ import com.opcoach.training.rental.RentalAgency;
 
 public class RentalAgencyPropertyView {
 
+	private static final String MENU_ID = "com.magellium.rental.eap.popupmenu.0";
+
 	private TreeViewer treeViewer;
 
 	@Inject
@@ -30,7 +33,7 @@ public class RentalAgencyPropertyView {
 
 	// @Override
 	@PostConstruct
-	public void createPartControl(Composite parent) {
+	public void createPartControl(Composite parent, EMenuService menuService) {
 		treeViewer = new TreeViewer(parent);
 
 		RentalProvider rentalProvider = new RentalProvider();
@@ -57,6 +60,8 @@ public class RentalAgencyPropertyView {
 		// Menu menu = menuManager.createContextMenu(treeViewer.getControl());
 		// treeViewer.getControl().setMenu(menu);
 		// getSite().registerContextMenu(menuManager, treeViewer);
+		menuService.registerContextMenu(treeViewer.getControl(), MENU_ID);
+
 	}
 
 	// @Override
