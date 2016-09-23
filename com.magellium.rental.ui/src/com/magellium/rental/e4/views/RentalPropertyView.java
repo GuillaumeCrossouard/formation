@@ -1,8 +1,12 @@
 package com.magellium.rental.e4.views;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -12,6 +16,7 @@ import org.eclipse.swt.widgets.Label;
 
 import com.magellium.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
+import com.opcoach.training.rental.RentalAgency;
 
 public class RentalPropertyView {
 
@@ -22,6 +27,9 @@ public class RentalPropertyView {
 	private Label lblLou;
 	private Label lblDu;
 	private Label lblAu;
+	
+	@Inject
+	private RentalAgency agency;
 
 	public RentalPropertyView() {
 	}
@@ -32,6 +40,13 @@ public class RentalPropertyView {
 //		super.init(site);
 //		site.getPage().addSelectionListener(this);
 //	}
+	
+	@Inject @Optional
+	public void receiveSelection(@Named(IServiceConstants.ACTIVE_SELECTION) Rental r){
+		if (r != null){
+			setRental(r);
+		}
+	}
 
 	// E34
 //	@Override
@@ -42,7 +57,7 @@ public class RentalPropertyView {
 
 //	@Override
 	@PostConstruct
-	public void createPartControl(Composite parent) {
+	public void createPartControl(Composite parent, RentalAgency agency) {
 		parent.setLayout(new GridLayout(1, false));
 
 		Group infoGroup = new Group(parent, SWT.NONE);
@@ -89,7 +104,8 @@ public class RentalPropertyView {
 
 		endDateLabel = new Label(dateGroup, SWT.NONE);
 
-		setRental(RentalCoreActivator.getAgency().getRentals().get(1));
+//		RentalAgency agency = RentalCoreActivator.getAgency();
+		setRental(agency.getRentals().get(1));
 	}
 
 //	@Override
