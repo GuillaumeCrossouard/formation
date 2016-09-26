@@ -135,5 +135,19 @@
             uri="fragment.e4xmi">
       </fragment>
    </extension>
+   <extension
+         point="com.opcoach.e4.preferences.e4PreferencePages">
+      <page
+            category="com.magellium.rental.ui.PalettePreferencePage"
+            class="com.magellium.rental.ui.RentalPreferencePage"
+            id="com.magellium.rental.ui.RentalPreferencePage"
+            name="Default">
+      </page>
+      <page
+            class="com.magellium.rental.ui.PalettePreferencePage"
+            id="com.magellium.rental.ui.PalettePreferencePage"
+            name="Rental Palettes">
+      </page>
+   </extension>
 
 </plugin>

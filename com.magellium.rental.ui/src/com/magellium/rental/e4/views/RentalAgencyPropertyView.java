@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
@@ -16,6 +17,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 
 import com.magellium.rental.core.RentalCoreActivator;
+import com.magellium.rental.ui.RentalPreferencePage;
 import com.magellium.rental.ui.RentalProvider;
 import com.opcoach.training.rental.RentalAgency;
 
@@ -106,5 +108,14 @@ public class RentalAgencyPropertyView {
 	// public void propertyChange(PropertyChangeEvent event) {
 	// treeViewer.refresh();
 	// }
+
+	@Inject
+	public void refreshTree(@Preference(value = RentalPreferencePage.OBJECTS_COLOR) String objectsCol,
+			@Preference(value = RentalPreferencePage.CUSTOMER_COLOR) String custCol,
+			@Preference(value = RentalPreferencePage.RENTAL_COLOR) String rentalCol) {
+		if (treeViewer != null) {
+			treeViewer.refresh();
+		}
+	}
 
 }
